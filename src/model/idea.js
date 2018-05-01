@@ -11,6 +11,11 @@ const ideaSchema = mongoose.Schema({
     required: true,
     unique: true,
   },
+  title: {
+    type: String,
+    required: true,
+    unique: true,
+  },
   subject: {
     type: String,
     required: true,

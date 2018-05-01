@@ -10,6 +10,7 @@ const apiURL = `http://localhost:${process.env.PORT}/api/ideas`;
 const createIdeaMock = () => {
   return new Idea({
     name: faker.lorem.words(10),
+    title: faker.lorem.words(10),
     subject: faker.lorem.words(25),
     body: faker.lorem.words(25),
   }).save();
