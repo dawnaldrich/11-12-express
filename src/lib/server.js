@@ -4,6 +4,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import logger from './logger';
 import ideaRoutes from '../route/idea-router';
+import errorMiddleware from './error-middleware';
 
 const app = express();
 let server = null;
@@ -22,6 +23,8 @@ const startServer = () => {
       });
     });
 };
+
+app.use(errorMiddleware);
 
 const stopServer = () => {
   return mongoose.disconnect()

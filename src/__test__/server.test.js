@@ -44,8 +44,8 @@ describe('/api/ideas', () => {
         expect(response.status).toEqual(400);
       });
   });
-  describe('GET /api/ideas', () => {
-    test('should respond with 200 if there are no error', () => {
+  describe('GET /api/ideas/', () => {
+    test('should respond with 200 if there are no errors', () => {
       let ideaToTest = null;
       return createIdeaMock()
         .then((idea) => {
@@ -59,7 +59,7 @@ describe('/api/ideas', () => {
         });
     });
     test('should respond with 404 if there is no idea to be found', () => {
-      return superagent.get(`${apiURL}/ThisIsAnInvalidID`)
+      return superagent.get(`${apiURL}/THisIsAnInvalidId`)
         .then(Promise.reject)
         .catch((response) => {
           expect(response.status).toEqual(404);
@@ -67,17 +67,14 @@ describe('/api/ideas', () => {
     });
   });
   describe('DELETE /api/ideas', () => {
-    test('should respond with 202 if there is no error', () => {
-      // let ideaToTest = null;
+    test('should respond with 204 if there is no error', () => {
       return createIdeaMock()
         .then((idea) => {
           // ideaToTest = idea;
           return superagent.delete(`${apiURL}/${idea._id}`);
         })
         .then((response) => {
-          expect(response.status).toEqual(202);
-          // expect(response.body.name).toEqual(ideaToTest.name);
-          // expect(response.body.subject).toEqual(ideaToTest.subject);
+          expect(response.status).toEqual(204);
         });
     });
     test('should respond with 404 if there is no idea to be found', () => {
